@@ -1,0 +1,14 @@
+.containerGift {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+    border: 2px solid black;
+
+}
+
+.img-gift{
+    width: 30rem;
+    margin-bottom: 1rem;
+    
+}

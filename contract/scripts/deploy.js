@@ -3,7 +3,7 @@ const main = async () => {
     const gameContract = await gameContractFactory.deploy(
         ["Miguel One", "Abigail Lincoln", "Wallabee Beatles"],
         ["https://pm1.narvii.com/6395/a6d4c2fcc6da652b2cecb99accbf932a2dd6e21e_hq.jpg", // Images
-        "https://static.wikia.nocookie.net/kidsnextdoorfanfiction/images/8/84/Abby_Lincoln.jpg/revision/latest/scale-to-width-down/400?cb=20140309003436", 
+        "https://static.wikia.nocookie.net/kidsnextdoorfanfiction/images/8/84/Abby_Lincoln.jpg", 
         "https://pm1.narvii.com/6056/208cd1672451b895dc33c286a157f5c4e22e3ceb_hq.jpg"],    
         [100, 200, 300],
         [100, 50, 25],
