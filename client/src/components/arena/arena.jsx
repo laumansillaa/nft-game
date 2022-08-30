@@ -74,7 +74,7 @@ const Arena = ({characterNFT}) => {
             }
         }
 
-    }, [gameContract])
+    }, [gameContract, boss])
 
 
     const runAttackAction = async () => {
@@ -94,104 +94,131 @@ const Arena = ({characterNFT}) => {
     }
 
     return (
-        <Container sx={{
-            mt:4,
+        <Box sx={{
             display: 'flex',
             flexDirection: 'column',
-            flexWrap: 'nowrap',
-            justifyContent: 'flex-start',
-            alignItems: 'center'
-
         }}>
-            {/* BOSS */}
-            {
-                boss && (
-                    <Box sx={{
-                        width: '50%',
-                        color:'#fff'
-                    }}>
-                        <Typography
-                        sx={{fontSize: 24, 
-                            pt: 0,
-                            background: '#03418C',
-                            borderRadius: '30px 30px 0px 0px'
-                            }}>{boss.name}</Typography>
+            <Box sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                flexWrap: 'nowrap',
+                justifyContent: 'space-around',
+                color: '#fff',
+                mt: 4
+            }}>
+                <Typography sx={{
+                    fontFamily:'Silkscreen',
+                    fontSize: 24,
+
+                }}>The enemy!</Typography>
+                <Typography sx={{
+                    fontFamily:'Silkscreen',
+                    fontSize: 24,
+                }}>You character!</Typography>
+
+            </Box>
+            <Container sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                flexWrap: 'nowrap',
+                justifyContent: 'flex-start',
+                alignItems: 'center'
+    
+            }}>
+                {/* BOSS */}
+                {
+                    boss && (
                         <Box sx={{
-                            mt: 0
+                            width: '50%',
+                            color:'#fff',
+                            mr: 3
                         }}>
-                            <img src={boss.imageURI} alt={`Boss ${boss.name}`} style={{width: '100%', mt: 0}} />
+                            <Typography
+                            sx={{fontSize: 24, 
+                                pt: 0,
+                                background: '#03418C',
+                                borderRadius: '30px 30px 0px 0px'
+                                }}>{boss.name}</Typography>
+                            <Box sx={{
+                                background: '#011228'
+                            }}>
+                                <img src={boss.imageURI} 
+                                    alt={`Boss ${boss.name}`} 
+                                    style={{width: '100%', mt: 0, width:'473px', height: '354px'}} />
+                                <Box sx={{
+                                    background: '#011228',
+                                    
+                                }}>
+                                    <progress value={boss.hp} max={boss.MaxHp} />
+                                    <Typography>{`${boss.hp} / ${boss.maxHp} HP`}</Typography>
+                                </Box>
+                            </Box>
+                            <Box sx={{
+                                background: '#03418C',
+                                borderRadius: '0px 0px 30px 30px'
+                            }}>
+                                <Button 
+                                    onClick={runAttackAction}
+                                    sx={{color: '#fff', fontSize: 18, padding: 0}}
+                                >{`💥 Attack ${boss.name}`}</Button>
+                            </Box>
+                        </Box>
+                    )
+                }
+                {/* CHARACTER NFT */}
+                {
+                    characterNFT && (
+                        <Box sx={{
+                            mt: 4,
+                            mb: 4,
+                            color: '#fff',
+                            width: '50%'
+                        }}>
+    
+                            {/* <Typography sx={{
+                                fontFamily:'Silkscreen',
+                                fontSize: 24,
+                                mb: 2
+                            }}>You character!</Typography> */}
+                            <Box sx={{
+                                background: '#011228',
+                                borderRadius: '30px 30px 0px 0px',
+                            }}>
+                                <Typography sx={{fontSize: 24, 
+                                    pt: 0,
+                                    background: '#03418C',
+                                    borderRadius: '30px 30px 0px 0px'
+                                }}>{characterNFT.name}</Typography>
+                                <img 
+                                    src={characterNFT.imageURI}
+                                    alt={`Character ${characterNFT.game}`}
+                                    style={{width:'473px', height: '354px'}}
+                                />
+                            </Box>
                             <Box sx={{
                                 background: '#011228',
                                 
                             }}>
-                                <progress value={boss.hp} max={boss.MaxHp} />
-                                <Typography>{`${boss.hp} / ${boss.maxHp} HP`}</Typography>
+                                <progress value={characterNFT.hp} max={characterNFT.maxHp} />
+                                <Typography>{`${characterNFT.hp} / ${characterNFT.maxHp} HP`}</Typography>
+                            </Box>
+    
+                            <Box sx={{
+                                background: '#03418C',
+                                borderRadius: '0px 0px 30px 30px'
+                            }}>
+                                <Typography
+                                    sx={{
+                                        fontSize: 18
+                                    }}
+                                >{`⚔️ Attack Damage: ${characterNFT.attackDamage}`}</Typography>
                             </Box>
                         </Box>
-                        <Box sx={{
-                            background: '#03418C',
-                            borderRadius: '0px 0px 30px 30px'
-                        }}>
-                            <Button 
-                                onClick={runAttackAction}
-                                sx={{color: '#fff', fontSize: 18}}
-                            >{`💥 Attack ${boss.name}`}</Button>
-                        </Box>
-                    </Box>
-                )
-            }
-            {/* CHARACTER NFT */}
-            {
-                characterNFT && (
-                    <Box sx={{
-                        mt: 4,
-                        mb: 4,
-                        color: '#fff',
-                        width: '50%'
-                    }}>
+                    )
+                }
+            </Container>
+        </Box>
 
-                        <Typography sx={{
-                            fontFamily:'Silkscreen',
-                            fontSize: 24,
-                            mb: 2
-                        }}>You character!</Typography>
-                        <Box sx={{
-                            background: '#011228',
-                            borderRadius: '30px 30px 0px 0px',
-                        }}>
-                            <Typography sx={{fontSize: 24, 
-                                pt: 0,
-                                background: '#03418C',
-                                borderRadius: '30px 30px 0px 0px'
-                            }}>{characterNFT.name}</Typography>
-                            <img 
-                                src={characterNFT.imageURI}
-                                alt={`Character ${characterNFT.game}`}
-                                style={{width:'473px', height: '354px'}}
-                            />
-                        </Box>
-                        <Box sx={{
-                            background: '#011228',
-                            
-                        }}>
-                            <progress value={characterNFT.hp} max={characterNFT.maxHp} />
-                            <Typography>{`${characterNFT.hp} / ${characterNFT.maxHp} HP`}</Typography>
-                        </Box>
-
-                        <Box sx={{
-                            background: '#03418C',
-                            borderRadius: '0px 0px 30px 30px'
-                        }}>
-                            <Typography
-                                sx={{
-                                    fontSize: 18
-                                }}
-                            >{`⚔️ Attack Damage: ${characterNFT.attackDamage}`}</Typography>
-                        </Box>
-                    </Box>
-                )
-            }
-        </Container>
 
     )
 }
