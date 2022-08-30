@@ -27,7 +27,7 @@ const Nav = () => {
                 >
                     Crypto-Game
                 </Typography>
-                <a href='https://www.github.com/laumansillaa' target='_blank' style={{textDecoration: 'none', color: '#fff'}}>
+                <a href='https://www.github.com/laumansillaa/nft-game' target='_blank' style={{textDecoration: 'none', color: '#fff'}}>
                     <GitHubIcon sx={{fontSize:40, mt:1}} />   
                 </a>
 
